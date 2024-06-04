@@ -6,17 +6,19 @@ def setup():
 def draw():
     background(255)
     translate(50,50)
-    squareFractal(500,1)
+    squareFractal(500,2)
     
 def squareFractal(sz,level):
     if level == 0:
         rect(0,0,sz,sz)
     else:
-        rect(0,0,sz/2.0,sz/2.0)
+        pushMatrix()
+        squareFractal(sz/2,level-1)
         translate(sz/2.0,0)
-        rect(0,0,sz/2.0,sz/2.0)
+        squareFractal(sz/2,level-1)
         translate(-sz/2.0,sz/2.0)
-        rect(0,0,sz/2.0,sz/2.0)
+        squareFractal(sz/2,level-1)
+        popMatrix()
 
         
     
